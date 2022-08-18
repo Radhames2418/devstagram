@@ -17,6 +17,6 @@
             <a href="/">Principal</a>
             <a href="nosotros">Nosotros</a>
         </nav>
-        <h1>Pagina Principal</h1>
+        <h1>Nosotros</h1>
     </body>
 </html>
