@@ -30,7 +30,7 @@
         @yield('contenido')
     </main>
 
-    <footer class="text-center p-5 text-gray-500 font-bold up">
+    <footer class="text-center mt-10 p-5 text-gray-500 font-bold up">
         DevStagram - Todos los derechos reservados Radhames Encarnacion
         {{ date('Y-m-d')}}
     </footer>
