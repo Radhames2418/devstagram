@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
@@ -24,7 +25,9 @@ class RegisterController extends Controller
             'password' => 'required|confirmed|min:6'
         ]);
 
-        dd('Creando Usuario');
+        $resultado = User::created($request->all());
+
+        dd($resultado);
     }
 
 }
