@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Renderizar la pagina principal
 Route::get('/', function () {
     return view('principal');
 });
 
-
+//Renderizar la pagina de registro y envio del formulario
 Route::get('/register',[RegisterController::class, 'index'])->name('register');
 Route::post('/register',[RegisterController::class, 'store']);
 
+//Renderizar el muro de creacion
+Route::get('/muro', [PostController::class, 'index'])->name('posts.index');
+
+
+//Renderizar el Login
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store']);
 

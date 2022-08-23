@@ -17,8 +17,8 @@
             </h1>
 
             <nav class="flex gap-2 items-center">
-                <a href="/login" class="font-bold hover:cursor-pointer uppercase text-gray-600 text-sm">Login</a>
-                <a href={{ route('register') }} class="font-bold hover:cursor-pointer uppercase text-gray-600 text-sm">Crear Cuenta</a>
+                <a href={{ route('login') }} class="font-bold hover:cursor-pointer uppercase text-gray-600 text-sm hover:bg-sky-600 p-2 rounded-md hover:text-white transition-colors">Login</a>
+                <a href={{ route('register') }} class="font-bold hover:cursor-pointer uppercase text-gray-600 text-sm hover:bg-sky-600 p-2 rounded-md hover:text-white transition-colors">Crear Cuenta</a>
             </nav>
         </div>
     </header>
