@@ -4,7 +4,6 @@
    Pagina Principal
  @endsection
 
-
 @section('contenido')
     <p>Contenido de esta pagina</p>
 @endsection
