@@ -14,12 +14,21 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        //Validacion
+        //Validacion de los campos
         $this->validate($request, [
-            'email' => 'required|max:30',
-            'password' => 'required|min:6'
+            'email' => 'required|email',
+            'password' => 'required'
         ]);
 
-        dd($request);
+        //Retorna un mensaje si el usuario no escribio sus credenciales correcta
+        if (!auth()->attempt($request->only('email', 'password'))) {
+            return back()->with('mensaje', 'Credenciales Incorrecta');
+        }
+
+        return redirect()->route('posts.index');
+    }
+
+    public function logout(){
+        return redirect()->route('login');
     }
 }

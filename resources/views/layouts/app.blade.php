@@ -17,8 +17,29 @@
             </h1>
 
             <nav class="flex gap-2 items-center">
-                <a href={{ route('login') }} class="font-bold hover:cursor-pointer uppercase text-gray-600 text-sm hover:bg-sky-600 p-2 rounded-md hover:text-white transition-colors">Login</a>
-                <a href={{ route('register') }} class="font-bold hover:cursor-pointer uppercase text-gray-600 text-sm hover:bg-sky-600 p-2 rounded-md hover:text-white transition-colors">Crear Cuenta</a>
+
+                @auth
+                    <a href={{ route('login') }}
+                        class="font-bold hover:cursor-pointer  text-gray-600 text-sm  p-2 rounded-md"> Hola:
+                        <span>{{ auth()->user()->username }}</span>
+                    </a>
+
+                    <form action={{ route('logout') }} method="POST">
+                        @csrf {{-- Directiva que te cuida de ataque --}}
+                        <button type="submit"
+                            class="font-bold hover:cursor-pointer uppercase text-gray-600 text-sm hover:bg-sky-600 p-2 rounded-md hover:text-white transition-colors">Cerrar
+                            Sesion</button>
+                    </form>
+
+                @endauth
+
+                @guest
+                    <a href={{ route('login') }}
+                        class="font-bold hover:cursor-pointer uppercase text-gray-600 text-sm hover:bg-sky-600 p-2 rounded-md hover:text-white transition-colors">Login</a>
+                    <a href={{ route('register') }}
+                        class="font-bold hover:cursor-pointer uppercase text-gray-600 text-sm hover:bg-sky-600 p-2 rounded-md hover:text-white transition-colors">Crear
+                        Cuenta</a>
+                @endguest
             </nav>
         </div>
     </header>
@@ -32,7 +53,7 @@
 
     <footer class="text-center mt-10 p-5 text-gray-500 font-bold up">
         DevStagram - Todos los derechos reservados Radhames Encarnacion
-        {{ date('Y-m-d')}}
+        {{ date('Y-m-d') }}
     </footer>
 </body>
 
