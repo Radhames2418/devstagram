@@ -14,7 +14,6 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->remember);
 
         //Validacion de los campos
         $this->validate($request, [
@@ -28,7 +27,7 @@ class LoginController extends Controller
             return back()->with('mensaje', 'Credenciales Incorrecta');
         }
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 
     public function logout(){
