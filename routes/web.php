@@ -38,8 +38,11 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 //Renderizar el muro de creacion
 Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
 
-//Foto
+//Foto - posts
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+
+//Formulario - posts
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
 //Imagen
 Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
