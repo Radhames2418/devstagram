@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Comentario extends Model
 {
     use HasFactory;
-
 
     /**
      * The attributes that are mass assignable.
@@ -16,18 +15,8 @@ class Post extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'titulo',
-        'descripcion',
-        'imagen',
-        'user_id'
+        'user_id',
+        'post_id',
+        'comentario'
     ];
-
-
-    /**
-     * Relacion de uno a muchos
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class)->select(['name' , 'username']);
-    }
 }

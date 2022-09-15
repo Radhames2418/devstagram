@@ -14,19 +14,24 @@ class PostController extends Controller
     //Middleware para auth
     public function __construct()
     {
-        $this->middleware('auth');
+        //Implementa el middleware excepto los metodos show e index
+        $this->middleware('auth')->except(['show', 'index']);
     }
 
     //Mostrar la vista
-    public function index(User $user) {
+    public function index(User $user)
+    {
+        $posts = Post::where('user_id', $user->id)->paginate(20);
 
         return view('dashboard', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $posts
         ]);
     }
 
     //Vista para crear
-    public function create() {
+    public function create()
+    {
         return view('posts.create');
     }
 
@@ -39,7 +44,14 @@ class PostController extends Controller
             'imagen' => 'required'
         ]);
 
-        Post::create([
+        // Post::create([
+        //     'titulo' => $request->titulo,
+        //     'descripcion' => $request->descripcion,
+        //     'imagen' => $request->imagen,
+        //     'user_id' => auth()->user()->id
+        // ]);
+
+        $request->user()->posts()->create([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
             'imagen' => $request->imagen,
@@ -47,6 +59,13 @@ class PostController extends Controller
         ]);
 
         return redirect()->route('posts.index', auth()->user()->username);
+    }
 
+    public function show(User $user, Post $post)
+    {
+        return view('posts.show', [
+            'post' => $post,
+            'user' => $user
+        ]);
     }
 }

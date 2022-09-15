@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -43,6 +44,12 @@ Route::get('/posts/create', [PostController::class, 'create'])->name('posts.crea
 
 //Formulario - posts
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+//Mostar un post en especifico
+Route::get('/{user:username}/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+//Comentarios
+Route::post('/{user:username}/posts/{post}', [ComentarioController::class, 'store'])->name('comentarios.store');
 
 //Imagen
 Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
