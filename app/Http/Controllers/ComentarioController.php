@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Comentario;
 use App\Models\Post;
 use App\Models\User;
@@ -25,6 +26,5 @@ class ComentarioController extends Controller
 
         //Imprimir un mensaje
         return back()->with('mensaje', 'Comentario Realizado Correctamente');
-
     }
 }

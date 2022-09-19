@@ -7,7 +7,7 @@
 
 @section('contenido')
     <div class="flex justify-center">
-        <div class="w-full md:8/12 lg:6/12 flex flex-col items-center md:flex-row">
+        <div class="w-full md:w-10/12 md:8/12 lg:6/12 flex flex-col items-center md:flex-row">
             <div class="w-8/12 lg:6/12 px-5">
                 <img class="w-2/3 m-auto" src="{{ asset('img/usuario.svg') }}" alt="Fondo de usuario">
             </div>
@@ -33,7 +33,7 @@
     </div>
 
 
-    <section class="container mx-auto mt-10">
+    <section class="container w-10/12 mx-auto mt-10">
         <h2 class="text-4xl text-center font-black my-10">Publicaciones</h2>
 
         @if ($posts->count())

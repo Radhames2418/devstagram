@@ -24,10 +24,18 @@ class Post extends Model
 
 
     /**
-     * Relacion de uno a muchos
+     * Relacion de uno a uno
      */
     public function user()
     {
         return $this->belongsTo(User::class)->select(['name' , 'username']);
+    }
+
+    /**
+     * Relacion de uno a muchos
+     */
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class);
     }
 }
