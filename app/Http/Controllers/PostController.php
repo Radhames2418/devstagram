@@ -68,4 +68,12 @@ class PostController extends Controller
             'user' => $user
         ]);
     }
+
+    public function destroy(Post $post)
+    {
+        $this->authorize('delete', $post);
+        $post->delete();
+
+        // return redirect()->ri
+    }
 }

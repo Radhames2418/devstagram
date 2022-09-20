@@ -48,6 +48,9 @@ Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 //Mostar un post en especifico
 Route::get('/{user:username}/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
+//Eliminar una publicacion
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
 //Comentarios
 Route::post('/{user:username}/posts/{post}', [ComentarioController::class, 'store'])->name('comentarios.store');
 
