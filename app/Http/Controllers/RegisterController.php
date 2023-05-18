@@ -33,11 +33,14 @@ class RegisterController extends Controller
          * Metodo para crear un registro
          */
         User::create([
-            'name' => $request->name,
+            'name'     => $request->name,
             'username' => $request->username,
-            'email' => $request->email,
+            'email'    => $request->email,
             'password' => Hash::make($request->password)
         ]);
+
+        // Autenticar usuarios
+        auth()->attempt(['email' => $request->email, 'password' => $request->password]);
 
         //Redireccionar al usuario
         return redirect()->route('posts.index');

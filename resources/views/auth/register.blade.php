@@ -30,7 +30,7 @@
                     >
 
                     @error('name')
-                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
+                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -50,7 +50,7 @@
                     >
 
                     @error('username')
-                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
+                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -70,7 +70,7 @@
                     >
 
                     @error('email')
-                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
+                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
                     @enderror
                 </div>
 
@@ -90,12 +90,13 @@
 
 
                     @error('password')
-                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
+                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="mb-5">
-                    <label for="password_confirmation" class="mb-2 block uppercase text-gray-500 font-bold">Repetir Contraseña</label>
+                    <label for="password_confirmation" class="mb-2 block uppercase text-gray-500 font-bold">Repetir
+                        Contraseña</label>
 
                     <input
                         id="password_confirmation"
@@ -106,7 +107,8 @@
                     >
                 </div>
 
-                <input type="submit" value="Crear Cuenta" class="bg-sky-600 hover:bg-sky-700 transition-colors hover:cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg">
+                <input type="submit" value="Crear Cuenta"
+                       class="bg-sky-600 hover:bg-sky-700 transition-colors hover:cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg">
 
             </form>
         </div>
