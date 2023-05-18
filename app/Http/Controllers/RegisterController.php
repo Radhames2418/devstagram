@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class RegisterController extends Controller
 {
@@ -13,6 +17,10 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+
+        // Modificar el request
+        $request->request->add(['username' => Str::slug($request->username)]);
+
         // Validacion
         $this->validate($request, [
             'name'     => 'required|max:30',
@@ -20,5 +28,18 @@ class RegisterController extends Controller
             'email'    => 'required|unique:users|email|max:60',
             'password' => 'required|confirmed|min:6',
         ]);
+
+        /**
+         * Metodo para crear un registro
+         */
+        User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+
+        //Redireccionar al usuario
+        return redirect()->route('posts.index');
     }
 }
