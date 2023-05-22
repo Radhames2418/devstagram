@@ -9,6 +9,7 @@ class LogoutController extends Controller
     //
     public function store (Request $request)
     {
-        dd('desde mi casa');
+        auth()->logout();
+        return redirect()->route('login');
     }
 }
