@@ -10,7 +10,7 @@
             <img src="{{ asset('img/login.jpg') }}" alt="imagen login de usuario" class="w-100">
         </div>
 
-        <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xl">
+        <div class="md:w-4/12 bg-white p-6 rounded-lg shadow-xl ">
             <form action="{{ route('login') }}" method="POST" novalidate>
 
                 @csrf
