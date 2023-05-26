@@ -16,9 +16,20 @@ class Post extends Model
      */
     protected $fillable = [
         'titulo',
-        'descripcion', // Adicionamos un campo extra
+        'descripcion',
         'imagen',
         'user_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class)->select(['id', 'name', 'username']);
+    }
+
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class);
+    }
+
 
 }
