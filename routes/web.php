@@ -46,6 +46,8 @@ Route::get('/posts/create', [PostController::class, 'create'])->name('posts.crea
 Route::get('/posts/{user:username}/post/{post}', [PostController::class, 'show'])->name('posts.show');
 Route::post('/post', [PostController::class, 'store'])->name('posts.store');
 
+Route::delete('/posts/{post}',  [PostController::class, 'destroy'])->name('posts.destroy');
+
 
 /**
  * Comment

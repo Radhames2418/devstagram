@@ -20,4 +20,10 @@ class Comentario extends Model
         'comentario'
     ];
 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class)->select(['id', 'name', 'username']);
+    }
+
 }

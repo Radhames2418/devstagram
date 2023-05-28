@@ -6,6 +6,7 @@ use App\Models\Comentario;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -52,5 +53,21 @@ class PostController extends Controller
             'post'         => $post,
             'user'         => $user
         ]);
+    }
+
+    public function destroy(Post $post)
+    {
+        $this->authorize('delete', $post);
+        $post->delete();
+
+        // Eliminar la imagen
+        $imagenPath = public_path('uploads') . '/' . $post->imagen;
+
+        if (File::exists($imagenPath)) {
+            unlink($imagenPath);
+        }
+
+
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
