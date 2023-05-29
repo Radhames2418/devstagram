@@ -2,17 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    //
-    public function index()
+
+    /**
+     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     */
+    public function index(): \Illuminate\Foundation\Application|View|Factory|Application
     {
         return view('auth.login');
     }
 
-    public function store(Request $request)
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws ValidationException
+     */
+    public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'email'    => 'required|email',

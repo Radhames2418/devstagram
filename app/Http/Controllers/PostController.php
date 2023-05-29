@@ -5,17 +5,30 @@ namespace App\Http\Controllers;
 use App\Models\Comentario;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Validation\ValidationException;
 
 class PostController extends Controller
 {
+    /**
+     *
+     */
     public function __construct()
     {
         $this->middleware('auth')->except(['show', 'index']);
     }
 
-    public function index(User $user)
+    /**
+     * @param User $user
+     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     */
+    public function index(User $user): \Illuminate\Foundation\Application|View|Factory|Application
     {
         return view('dashboard', [
             'user' =>  $user,
@@ -23,12 +36,20 @@ class PostController extends Controller
         ]);
     }
 
-    public function create()
+    /**
+     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     */
+    public function create(): \Illuminate\Foundation\Application|View|Factory|Application
     {
         return view('posts.create');
     }
 
-    public function store(Request $request)
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws ValidationException
+     */
+    public function store(Request $request): RedirectResponse
     {
         // Validacion
         $this->validate($request, [
@@ -47,7 +68,12 @@ class PostController extends Controller
         return redirect()->route('posts.index', auth()->user()->username);
     }
 
-    public function show(User $user, Post $post)
+    /**
+     * @param User $user
+     * @param Post $post
+     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     */
+    public function show(User $user, Post $post): \Illuminate\Foundation\Application|View|Factory|Application
     {
         return view('posts.show', [
             'post'         => $post,
@@ -55,7 +81,12 @@ class PostController extends Controller
         ]);
     }
 
-    public function destroy(Post $post)
+    /**
+     * @param Post $post
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function destroy(Post $post): RedirectResponse
     {
         $this->authorize('delete', $post);
         $post->delete();

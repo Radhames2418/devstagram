@@ -10,14 +10,14 @@ use Illuminate\Http\Request;
 class ComentarioController extends Controller
 {
     //
-    public function store(Request $request, User $user, Post $post)
+    public function store(Request $request, User $user, Post $post): \Illuminate\Http\RedirectResponse
     {
-        // validar
+        // Validar
         $this->validate($request, [
             'comentario' => 'required|max:255'
         ]);
 
-        // almacenar el resultado
+        // Almacenar el resultado
         Comentario::create([
             'user_id'     =>  auth()->user()->id,
             'post_id'      =>  $post->id,

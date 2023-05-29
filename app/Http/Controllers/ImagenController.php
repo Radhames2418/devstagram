@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
 class ImagenController extends Controller
 {
-    //
-    public function store(Request $request)
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function store(Request $request): JsonResponse
     {
         $imagen = $request->file('file');
 

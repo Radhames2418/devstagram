@@ -3,19 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
-    public function index()
+    /**
+     * @return Application|Factory|View|\Illuminate\Foundation\Application
+     */
+    public function index(): \Illuminate\Foundation\Application|View|Factory|Application
     {
         return view('auth.register');
     }
 
-    public function store(Request $request)
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws ValidationException
+     */
+    public function store(Request $request): RedirectResponse
     {
 
         // Modificar el request
