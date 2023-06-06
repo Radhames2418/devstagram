@@ -82,5 +82,5 @@ Route::post('/{user:username}/editar-perfil', [PerfilController::class, 'store']
  * Follower
  */
 
-Route::post('/{user:username}/follow', [FollowerController::class, 'index'])->name('users.follow');
+Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
 Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');

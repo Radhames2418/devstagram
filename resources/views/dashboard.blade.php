@@ -14,7 +14,7 @@
                 <div class="flex items-center gap-2">
                     <p class="text-gray-400 text-2xl" >{{  $user->username  }}</p>
                     @auth
-                        @if($user->id == auth()->user()->id)
+                        @if($user->id === auth()->user()->id)
                             <a
                                 href="{{ route('perfil.store', $user) }}"
                                 class="text-gray-500 hover:text-gray-600 cursor-pointer" href="">
@@ -38,6 +38,27 @@
                     <span class="font-normal">Posts</span>
                 </p>
 
+                @auth
+                    @if($user->id !== auth()->user()->id)
+                        <form action="{{ route('users.follow', $user) }}" method="POST">
+                            @csrf
+                            <input
+                                type="submit"
+                                class="bg-blue-600  text-white uppercase rounded-lg px-3 py-1 text-sm font-bold cursor-pointer"
+                                value="seguir"/>
+                        </form>
+
+
+                        <form action="{{ route('users.unfollow', $user) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input
+                                type="submit"
+                                class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-sm font-bold cursor-pointer"
+                                value="Deja de seguir"/>
+                        </form>
+                    @endif
+                @endauth
             </div>
         </div>
     </div>

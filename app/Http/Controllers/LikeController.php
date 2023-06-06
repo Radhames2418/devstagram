@@ -12,7 +12,7 @@ class LikeController extends Controller
     /**
      * @param Request $request
      * @param Post $post
-     * @return RedirectResponse
+     * @return RedirectResponsez
      */
     public function store(Request $request, Post $post): RedirectResponse
     {
