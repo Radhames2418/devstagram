@@ -97,7 +97,6 @@ class PostController extends Controller
             unlink($imagenPath);
         }
 
-
         return redirect()->route('posts.index', auth()->user()->username);
     }
 }

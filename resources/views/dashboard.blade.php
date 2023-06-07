@@ -71,7 +71,7 @@
 
         @if($user->posts->count())
             <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                @foreach($user->posts()->paginate($number_pagination) as $post)
+                @foreach($user->posts()->latest->paginate($number_pagination) as $post)
                     <div class="">
                         <a href=" {{ route('posts.show', [$user, $post]) }} ">
                             <img src="{{ asset('uploads') . '/' . $post->imagen  }}" alt="imagen de la publicación de {{ $post->titulo }}">
