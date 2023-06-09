@@ -5,7 +5,6 @@
     {{  $post->titulo  }}
 @endsection
 
-
 @section('contenido')
     <div class="container mx-auto md:flex gap-2">
         <div class="md:w-1/2">
